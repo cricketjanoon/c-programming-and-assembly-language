@@ -4,10 +4,41 @@
 void add4();
 void func1(); // this function contains examples form lecture 06
 void func2(); // this function contains examples from lecture 07
+void func3(); // this function contains examples from lecture 08
 
 int main()
 {
-    func2();
+    func3();
+}
+
+void func3() {
+
+    //char* pA = 0;   // mov pA, 0x0000
+    //int* pB = 0;   // mov pB, 0x0000
+    //pA++;   // pA = pA+1
+    //pB++;   // pB = pB+4
+
+
+    // string length
+    char* pA = "This is a constant string";
+    int i = 0;
+    while (pA[i] != '\0') {
+        i++;
+    }
+    printf("Count: %d\n", i);
+
+    __asm {
+              mov ebx, pA
+              mov ecx, 0
+    compare:  cmp byte ptr [ebx], 0x00
+              jz done
+              inc ecx
+              inc ebx
+              jmp compare
+    done:     mov i, ecx
+
+    }
+    printf("Count(asm): %d\n", i);
 }
 
 void func2() {
