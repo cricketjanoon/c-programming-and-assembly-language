@@ -5,10 +5,41 @@ void add4();
 void func1(); // this function contains examples form lecture 06
 void func2(); // this function contains examples from lecture 07
 void func3(); // this function contains examples from lecture 08
+void func4(); // this function contains examples from lecture 09
 
 int main()
 {
-    func3();
+    func4();
+}
+
+void func4() {
+
+    //swapping variables
+    int x=10, y=2, temp;
+    //temp = x;
+    //x = y;
+    //y = temp;
+    //printf("x: %d, y: %d\n", x, y);
+
+    // method 1: for local variables
+    __asm {
+        push x
+        push y
+        pop x
+        pop y
+    }
+    printf("x: %d, y: %d\n", x, y);
+
+    ////method 2: for pointer variables passed to function
+    //__asm {
+    //    mov eax, x
+    //    mov ebx, y
+    //    push [eax]
+    //    push [ebx]
+    //    pop [eax]
+    //    pop [ebx]
+    //}
+
 }
 
 void func3() {
